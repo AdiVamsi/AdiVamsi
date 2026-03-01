@@ -1,16 +1,52 @@
-## Hi there 👋
+Hi, I’m Adi Vamsi 👋
 
-<!--
-**AdiVamsi/AdiVamsi** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+I’m building systems that help Indian small businesses generate leads and grow.
 
-Here are some ideas to get you started:
+Right now I’m building:
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+🚀 Indian SME Engine
+
+A multi-tenant backend CRM that handles:
+
+• Lead capture
+• Appointments
+• Testimonials
+• Services
+• Authentication
+• Public website forms
+
+Repo:
+https://github.com/AdiVamsi/indian-sme-engine
+
+⸻
+
+🎯 Mission
+
+Build automation tools that allow small businesses to grow without hiring large teams.
+
+Long term goal:
+Help 1000+ Indian businesses generate consistent leads.
+
+⸻
+
+🛠 Tech I’m using
+
+Node.js
+Express
+PostgreSQL
+Prisma
+Jest
+
+⸻
+
+📈 Current Focus
+
+Building every day.
+
+Backend → Frontend → Deployment → Automation → AI agents
+
+⸻
+
+📬 Contact
+
+Email: adivamsi88@gmail.com
