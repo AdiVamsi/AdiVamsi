@@ -28,24 +28,20 @@ Currently at DATARA building async Python services and LLM classification pipeli
 
 ## Systems
 
-<div align="center">
-
 <table>
 <tr>
-<td align="center">
-
-[![Indian SME Engine](https://github-readme-stats.vercel.app/api/pin/?username=AdiVamsi&repo=indian-sme-engine&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&icon_color=58a6ff&text_color=e6edf3)](https://github.com/AdiVamsi/indian-sme-engine)
-
+<td width="50%">
+<a href="https://github.com/AdiVamsi/indian-sme-engine">
+<img src="images/card-sme-engine.svg" width="100%" alt="Indian SME Engine"/>
+</a>
 </td>
-<td align="center">
-
-[![Agent Hub](https://github-readme-stats.vercel.app/api/pin/?username=AdiVamsi&repo=agent-hub&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&icon_color=58a6ff&text_color=e6edf3)](https://github.com/AdiVamsi/agent-hub)
-
+<td width="50%">
+<a href="https://github.com/AdiVamsi/agent-hub">
+<img src="images/card-agent-hub.svg" width="100%" alt="Agent Hub"/>
+</a>
 </td>
 </tr>
 </table>
-
-</div>
 
 **Indian SME Engine** — LLM-powered multi-tenant CRM for Indian SMBs. Captures leads from web forms and WhatsApp, auto-classifies and scores them via AI, surfaces prioritized follow-ups through a real-time operator dashboard. Full backend: JWT auth, multi-tenant data isolation, WebSocket live updates, AI scoring engine. 100+ commits, actively developed.
 
@@ -112,21 +108,15 @@ stack:   Python · FastAPI · Node.js · LangChain · LangGraph · PostgreSQL ·
 
 ## Play With Me
 
-> **503: You're On Call**
->
-> A production alert just fired. Midnight. Error rate 67%. DB connections maxed at 387/50. P99 latency at 4,200ms.
->
-> You have 3 decisions to diagnose and fix it — no hints, no tutorials.
->
-> This is the kind of system I build. And think about.
+**Your service just went down.** 67% error rate. DB connections maxed. You have 3 decisions to find the root cause and fix it — no hints, no tutorials, no second chances.
 
-<div align="center">
+Click the terminal to respond:
 
-[![▶ Play 503: You're On Call](https://img.shields.io/badge/%E2%96%B6%20Play%20503%3A%20You're%20On%20Call-%230d1117?style=for-the-badge&color=58a6ff&logoColor=white)](https://adivamsi.github.io/503-on-call)
+<a href="https://adivamsi.github.io/503-on-call">
+<img src="images/play-preview.svg" width="100%" alt="503: You're On Call — click to play"/>
+</a>
 
-*3 minutes. No tutorials. Just decisions.*
-
-</div>
+<sub>A 3-minute backend incident triage game — the kind of problem I think about every day.</sub>
 
 ---
 
@@ -138,7 +128,7 @@ stack:   Python · FastAPI · Node.js · LangChain · LangGraph · PostgreSQL ·
 &nbsp;
 [![Portfolio](https://img.shields.io/badge/Portfolio-0d1117?style=flat-square&logo=vercel&logoColor=ffffff)](https://portfolio-orpin-rho-13.vercel.app)
 &nbsp;
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0d1117?style=flat-square&logo=linkedin&logoColor=0a66c2)](https://linkedin.com/in/YOUR-LINKEDIN-HANDLE)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0d1117?style=flat-square&logo=linkedin&logoColor=0a66c2)](https://www.linkedin.com/in/adi-vamsi-sai-326667128/)
 
 ---
 

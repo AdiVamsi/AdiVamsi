@@ -1,0 +1,70 @@
+<svg width="480" height="224" viewBox="0 0 480 224" xmlns="http://www.w3.org/2000/svg">
+  <!-- Card background -->
+  <rect width="480" height="224" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Title bar -->
+  <rect width="480" height="40" rx="8" fill="#1c2128"/>
+  <rect y="28" width="480" height="12" fill="#1c2128"/>
+  <line x1="0" y1="40" x2="480" y2="40" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Traffic dots -->
+  <circle cx="22" cy="20" r="5" fill="#ff5f57"/>
+  <circle cx="40" cy="20" r="5" fill="#febc2e"/>
+  <circle cx="58" cy="20" r="5" fill="#28c840"/>
+
+  <!-- Repo path -->
+  <text x="240" y="21" text-anchor="middle" dominant-baseline="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="11" fill="#8b949e">AdiVamsi / agent-hub</text>
+
+  <!-- Arrow top-right -->
+  <text x="458" y="21" text-anchor="middle" dominant-baseline="middle"
+        font-family="sans-serif" font-size="15" fill="#58a6ff">↗</text>
+
+  <!-- Active status -->
+  <circle cx="26" cy="62" r="4.5" fill="#3fb950">
+    <animate attributeName="opacity" values="1;0.35;1" dur="2.3s" repeatCount="indefinite"/>
+  </circle>
+  <text x="38" y="63" dominant-baseline="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="10" fill="#3fb950" letter-spacing="0.06em">ACTIVE · ~12 EXPERIMENTS/HOUR</text>
+
+  <!-- Project name -->
+  <text x="22" y="94"
+        font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
+        font-size="19" font-weight="700" fill="#e6edf3">Agent Hub</text>
+
+  <!-- Description -->
+  <text x="22" y="118"
+        font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
+        font-size="12" fill="#8b949e">Self-improving agent platform. 3-primitive loop:</text>
+  <text x="22" y="136"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace"
+        font-size="11" fill="#79c0ff">program → artifact → metric → commit</text>
+
+  <!-- Tags -->
+  <rect x="22" y="154" width="52" height="20" rx="3" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="48" y="164" text-anchor="middle" dominant-baseline="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="10" fill="#8b949e">Python</text>
+
+  <rect x="82" y="154" width="72" height="20" rx="3" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="118" y="164" text-anchor="middle" dominant-baseline="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="10" fill="#8b949e">LangGraph</text>
+
+  <rect x="162" y="154" width="66" height="20" rx="3" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="195" y="164" text-anchor="middle" dominant-baseline="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="10" fill="#8b949e">AI Agents</text>
+
+  <rect x="236" y="154" width="54" height="20" rx="3" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="263" y="164" text-anchor="middle" dominant-baseline="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="10" fill="#8b949e">PyTorch</text>
+
+  <rect x="298" y="154" width="80" height="20" rx="3" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="338" y="164" text-anchor="middle" dominant-baseline="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="10" fill="#8b949e">Agentic Orch.</text>
+
+  <!-- Bottom bar -->
+  <line x1="0" y1="186" x2="480" y2="186" stroke="#30363d" stroke-width="1"/>
+  <text x="22" y="205" dominant-baseline="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="10" fill="#8b949e">Claude · Codex · Any LLM provider</text>
+  <text x="458" y="205" text-anchor="end" dominant-baseline="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="10" fill="#58a6ff">View repo →</text>
+</svg>
