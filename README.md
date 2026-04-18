@@ -162,104 +162,139 @@ stack:    Python · FastAPI · LangChain · LangGraph · ChromaDB · PostgreSQL
 
 ---
 
-## 3 AM · You're On Call
+## Trace a Request
 
-<img src="images/play-preview.svg" width="100%" alt="503: You're On Call"/>
+How a single query moves through [insurance-claim-rag](https://github.com/AdiVamsi/insurance-claim-rag). Expand each stage to see what happens — and *why* it's built that way.
+
+<img src="images/trace-header.svg" width="100%" alt="Request trace through insurance-claim-rag pipeline"/>
 
 ```
-[03:14:22]  PagerDuty: prod-api p99 latency 8400ms · error_rate 67% · db_pool EXHAUSTED
-[03:14:23]  You:       $ ssh prod-api-01
+curl -X POST /ask -d '{"query": "Does my auto policy cover flood damage?"}'
 ```
 
-**Three decisions. No hints. Expand a choice to see what happens.**
-
 <details>
-<summary><b>Decision 1 —</b> First move?</summary>
+<summary><b>Stage 1 · classify</b> — What kind of claim is this?</summary>
 
 &nbsp;
 
-<details>
-<summary>&nbsp;&nbsp;→ <code>kubectl rollout restart</code> the API pods</summary>
+An LLM classifier reads the raw query and outputs a `policy_type` + confidence score. No retrieval yet — this is a cheap call that routes the rest of the pipeline.
 
-&nbsp;&nbsp;&nbsp;&nbsp;❌ Connections drain, pool recovers for 40 seconds, then saturates again. You bought time, not a fix. **Pager fires again at 03:19.**
+```json
+{
+  "policy_type": "auto",
+  "confidence": 0.95,
+  "rationale": "Mentions auto coverage and a specific peril (flood)."
+}
+```
 
-</details>
+**Gate:** If confidence < 0.6, the service **refuses immediately** — no point retrieving documents against a misclassified query. The refusal reason is logged in `audit_trail.classify`.
 
-<details>
-<summary>&nbsp;&nbsp;→ Open the DB: <code>SELECT state, count(*) FROM pg_stat_activity GROUP BY 1</code></summary>
-
-&nbsp;&nbsp;&nbsp;&nbsp;✅ 198 of 200 connections stuck in `idle in transaction`. Something opened transactions and never committed. Go to **Decision 2**.
-
-</details>
-
-<details>
-<summary>&nbsp;&nbsp;→ Scale the pods 3x and go back to bed</summary>
-
-&nbsp;&nbsp;&nbsp;&nbsp;❌ More pods = more connection pool clients = DB dies harder. **You just DoSed your own database.**
-
-</details>
+**Why this matters:** Without classification, a homeowner's query could retrieve auto clauses and hallucinate a confident wrong answer. The gate costs ~200ms and prevents an entire class of errors downstream.
 
 </details>
 
 <details>
-<summary><b>Decision 2 —</b> 198 idle-in-transaction connections. Where's the bug?</summary>
+<summary><b>Stage 2 · retrieve</b> — Find the relevant policy clauses</summary>
 
 &nbsp;
 
-<details>
-<summary>&nbsp;&nbsp;→ Kill the idle connections: <code>pg_terminate_backend(...)</code></summary>
+ChromaDB vector search over MiniLM embeddings, **filtered by `policy_type: "auto"`** from Stage 1. Returns top-k chunks with similarity scores.
 
-&nbsp;&nbsp;&nbsp;&nbsp;⚠️ Service recovers. But you didn't find the bug. It'll page you again tomorrow. **Right answer, wrong altitude.**
+```json
+{
+  "k": 5,
+  "top_sim": 0.71,
+  "best_chunk": "Section 3 · Comprehensive Coverage — pays for direct and accidental
+    loss from perils other than collision, including fire, theft, vandalism,
+    falling objects, hail, and impact with an animal. Flood damage is included
+    only if specifically endorsed..."
+}
+```
 
-</details>
+**Gate:** If `top_sim` < 0.45, the corpus doesn't have relevant content — the service **refuses** rather than forcing the LLM to generate from weak context. Logged in `audit_trail.retrieve`.
 
-<details>
-<summary>&nbsp;&nbsp;→ Grep the last deploy for <code>BEGIN</code> / <code>session.begin()</code> without matching <code>commit</code> or <code>with</code>-block</summary>
-
-&nbsp;&nbsp;&nbsp;&nbsp;✅ New background worker opened a session on startup and reused it across tasks. An exception in one task left the transaction open — permanently. Go to **Decision 3**.
-
-</details>
-
-<details>
-<summary>&nbsp;&nbsp;→ Raise the connection pool size</summary>
-
-&nbsp;&nbsp;&nbsp;&nbsp;❌ Leaks don't care about pool size. You'll hit the ceiling again, just later. **The leak still runs.**
-
-</details>
+**Why this matters:** Metadata-filtered search (not just vector similarity) prevents cross-policy contamination. A homeowner's flood clause and an auto flood endorsement say different things — the filter keeps them separate.
 
 </details>
 
 <details>
-<summary><b>Decision 3 —</b> The fix?</summary>
+<summary><b>Stage 3 · ground</b> — Generate an answer anchored to the retrieved text</summary>
 
 &nbsp;
 
-<details>
-<summary>&nbsp;&nbsp;→ Wrap every worker task in a scoped session + context manager; add a connection-age alert</summary>
+The LLM receives the query + retrieved chunks and must produce a structured answer **that quotes directly from the context**. No synthesis from training data — if the clause doesn't say it, the answer can't say it.
 
-&nbsp;&nbsp;&nbsp;&nbsp;✅ Session lifecycle is now bounded by the task, not the process. The alert catches it in staging next time. **Incident closed, bug killed at the root, guardrail in place so the next deploy can't do this again.**
+```json
+{
+  "answer": "Flood damage is included only if specifically endorsed; absent
+    that endorsement, flood loss is not covered under comprehensive.",
+  "cited_index": 0,
+  "cited_text": "Flood damage is included only if specifically endorsed...",
+  "sufficient": true
+}
+```
+
+**Design decision:** The prompt instructs the model to select a `cited_index` from the retrieved chunks and extract a verbatim quote. This makes the next stage (verify) possible — you can't verify a paraphrase, but you can verify a quote.
+
+</details>
+
+<details>
+<summary><b>Stage 4 · verify</b> — Does the citation actually exist in the context?</summary>
+
+&nbsp;
+
+A deterministic check (no LLM) — does the quoted text from Stage 3 actually appear in the retrieved chunks from Stage 2? This catches hallucinated citations.
+
+```json
+{
+  "verified": true,
+  "quote_len": 89,
+  "match_type": "substring"
+}
+```
+
+**Gate:** If `verified: false`, the model cited text that doesn't exist in the context — a hallucinated citation. The service **refuses** and logs it. This is the gate that catches LLM confabulation.
+
+**Why this matters:** Most RAG systems trust the model's citations. This one doesn't. A compliance officer can trace every answer back to a real page, section, and verbatim clause — or the system tells you it can't.
 
 </details>
 
 <details>
-<summary>&nbsp;&nbsp;→ Add a cron to kill idle-in-transaction connections older than 5 minutes</summary>
+<summary><b>Stage 5 · respond</b> — Structured JSON, not chat</summary>
 
-&nbsp;&nbsp;&nbsp;&nbsp;⚠️ You papered over the leak instead of fixing it. A future engineer will hit the exact same 3 AM page, and your cron will hide the signal.
+&nbsp;
 
-</details>
+All stages collapse into a single `ClaimAnswer` object. Every field is typed, every decision is auditable.
 
-<details>
-<summary>&nbsp;&nbsp;→ Revert the deploy and write a postmortem</summary>
+```json
+{
+  "query": "Does my auto policy cover flood damage?",
+  "answer": "Flood damage is included only if specifically endorsed...",
+  "decision": "answered",
+  "confidence": "high",
+  "citations": [{
+    "text": "Flood damage is included only if specifically endorsed...",
+    "source_file": "auto_personal_policy.pdf",
+    "page_number": 1,
+    "section_heading": "3. Comprehensive Coverage",
+    "similarity": 0.71
+  }],
+  "audit_trail": {
+    "classify": { "policy_type": "auto", "confidence": 0.95 },
+    "retrieve": { "k": 5, "top_sim": 0.71 },
+    "ground":   { "cited_index": 0, "sufficient": true },
+    "verify":   { "verified": true, "quote_len": 89 }
+  }
+}
+```
 
-&nbsp;&nbsp;&nbsp;&nbsp;⚠️ Stops the bleeding, but the worker pattern is now tribal knowledge — not a guardrail. **Half credit.**
-
-</details>
+**The point:** An adjuster doesn't read chat. They need a decision, a cited clause, a page number, and an audit trail they can hand to compliance. That's what this returns — structured output designed for a downstream review queue, not a conversation.
 
 </details>
 
 &nbsp;
 
-<sub>The system works. Go to sleep.<br/>— <i>The kind of problem I think about every day. Every path above is a real pattern I've either shipped a fix for or inherited.</i></sub>
+<sub>3 independent refusal gates. Every answer traceable to a verbatim clause. If the system can't prove it, it says so.<br/>— <a href="https://github.com/AdiVamsi/insurance-claim-rag"><i>View the full system</i></a></sub>
 
 ---
 

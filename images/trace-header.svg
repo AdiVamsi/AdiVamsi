@@ -1,0 +1,93 @@
+<svg width="960" height="140" viewBox="0 0 960 140" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="traceBg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="50%" stop-color="#161b22"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+    <linearGradient id="pipeGlow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1f6feb" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#1f6feb" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#1f6feb" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="140" rx="8" fill="url(#traceBg)" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Pipeline glow line -->
+  <rect x="30" y="68" width="900" height="4" rx="2" fill="url(#pipeGlow)"/>
+
+  <!-- Stage nodes -->
+  <circle cx="120" cy="70" r="18" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+  <text x="120" y="71" text-anchor="middle" dominant-baseline="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="9" font-weight="600" fill="#58a6ff">POST</text>
+  <text x="120" y="105" text-anchor="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="10" fill="#8b949e">/ask</text>
+
+  <!-- Arrow -->
+  <line x1="148" y1="70" x2="202" y2="70" stroke="#30363d" stroke-width="1.5"/>
+  <polygon points="200,65 210,70 200,75" fill="#30363d"/>
+
+  <circle cx="240" cy="70" r="18" fill="#0d1117" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="240" y="71" text-anchor="middle" dominant-baseline="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="8" font-weight="600" fill="#d2a8ff">CLASS</text>
+  <text x="240" y="105" text-anchor="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="10" fill="#8b949e">classify</text>
+
+  <line x1="268" y1="70" x2="322" y2="70" stroke="#30363d" stroke-width="1.5"/>
+  <polygon points="320,65 330,70 320,75" fill="#30363d"/>
+
+  <circle cx="360" cy="70" r="18" fill="#0d1117" stroke="#79c0ff" stroke-width="2"/>
+  <text x="360" y="71" text-anchor="middle" dominant-baseline="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="8" font-weight="600" fill="#79c0ff">RETR</text>
+  <text x="360" y="105" text-anchor="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="10" fill="#8b949e">retrieve</text>
+
+  <line x1="388" y1="70" x2="442" y2="70" stroke="#30363d" stroke-width="1.5"/>
+  <polygon points="440,65 450,70 440,75" fill="#30363d"/>
+
+  <circle cx="480" cy="70" r="18" fill="#0d1117" stroke="#3fb950" stroke-width="2"/>
+  <text x="480" y="71" text-anchor="middle" dominant-baseline="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="7" font-weight="600" fill="#3fb950">GRND</text>
+  <text x="480" y="105" text-anchor="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="10" fill="#8b949e">ground</text>
+
+  <line x1="508" y1="70" x2="562" y2="70" stroke="#30363d" stroke-width="1.5"/>
+  <polygon points="560,65 570,70 560,75" fill="#30363d"/>
+
+  <circle cx="600" cy="70" r="18" fill="#0d1117" stroke="#e3b341" stroke-width="2"/>
+  <text x="600" y="71" text-anchor="middle" dominant-baseline="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="7" font-weight="600" fill="#e3b341">VRFY</text>
+  <text x="600" y="105" text-anchor="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="10" fill="#8b949e">verify</text>
+
+  <line x1="628" y1="70" x2="682" y2="70" stroke="#30363d" stroke-width="1.5"/>
+  <polygon points="680,65 690,70 680,75" fill="#30363d"/>
+
+  <circle cx="720" cy="70" r="18" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+  <text x="720" y="71" text-anchor="middle" dominant-baseline="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="8" font-weight="600" fill="#58a6ff">JSON</text>
+  <text x="720" y="105" text-anchor="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="10" fill="#8b949e">respond</text>
+
+  <!-- Refusal branches -->
+  <line x1="240" y1="88" x2="240" y2="125" stroke="#f78166" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="360" y1="88" x2="360" y2="125" stroke="#f78166" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="600" y1="88" x2="600" y2="125" stroke="#f78166" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <text x="300" y="130" text-anchor="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="9" fill="#f78166">refuse</text>
+
+  <!-- Title -->
+  <text x="870" y="40" text-anchor="middle"
+        font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
+        font-size="13" font-weight="600" fill="#e6edf3">Trace a Request</text>
+  <text x="870" y="58" text-anchor="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="10" fill="#8b949e">insurance-claim-rag</text>
+
+  <!-- Pulse animation on pipeline -->
+  <circle r="4" fill="#58a6ff" opacity="0.8">
+    <animateMotion dur="4s" repeatCount="indefinite" path="M120,70 L240,70 L360,70 L480,70 L600,70 L720,70"/>
+    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="4s" repeatCount="indefinite"/>
+  </circle>
+</svg>
