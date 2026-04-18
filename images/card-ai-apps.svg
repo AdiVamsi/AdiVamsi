@@ -1,0 +1,57 @@
+<svg width="480" height="224" viewBox="0 0 480 224" xmlns="http://www.w3.org/2000/svg">
+  <rect width="480" height="224" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+
+  <rect width="480" height="40" rx="8" fill="#1c2128"/>
+  <rect y="28" width="480" height="12" fill="#1c2128"/>
+  <line x1="0" y1="40" x2="480" y2="40" stroke="#30363d" stroke-width="1"/>
+
+  <circle cx="22" cy="20" r="5" fill="#ff5f57"/>
+  <circle cx="40" cy="20" r="5" fill="#febc2e"/>
+  <circle cx="58" cy="20" r="5" fill="#28c840"/>
+
+  <text x="240" y="21" text-anchor="middle" dominant-baseline="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="11" fill="#8b949e">AdiVamsi / ai-apps-portfolio</text>
+
+  <text x="458" y="21" text-anchor="middle" dominant-baseline="middle"
+        font-family="sans-serif" font-size="15" fill="#58a6ff">&#8599;</text>
+
+  <text x="22" y="63" dominant-baseline="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="10" fill="#d2a8ff" letter-spacing="0.04em">5 APPS &#183; 1 CODEBASE &#183; OPENAI + OLLAMA</text>
+
+  <text x="22" y="92"
+        font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
+        font-size="19" font-weight="700" fill="#e6edf3">AI Apps Portfolio</text>
+
+  <text x="22" y="116"
+        font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
+        font-size="12" fill="#8b949e">Chat &#183; Prompt Chains &#183; Summarization &#183; NL-to-SQL &#183; RAG</text>
+  <text x="22" y="134"
+        font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
+        font-size="12" fill="#8b949e">Provider-agnostic architecture. Not five demos &#8212; one system.</text>
+
+  <rect x="22" y="152" width="56" height="20" rx="3" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="50" y="162" text-anchor="middle" dominant-baseline="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="10" fill="#8b949e">Python</text>
+
+  <rect x="86" y="152" width="60" height="20" rx="3" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="116" y="162" text-anchor="middle" dominant-baseline="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="10" fill="#8b949e">FastAPI</text>
+
+  <rect x="154" y="152" width="62" height="20" rx="3" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="185" y="162" text-anchor="middle" dominant-baseline="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="10" fill="#8b949e">OpenAI</text>
+
+  <rect x="224" y="152" width="56" height="20" rx="3" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="252" y="162" text-anchor="middle" dominant-baseline="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="10" fill="#8b949e">Ollama</text>
+
+  <rect x="288" y="152" width="80" height="20" rx="3" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="328" y="162" text-anchor="middle" dominant-baseline="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="10" fill="#8b949e">LangChain</text>
+
+  <line x1="0" y1="186" x2="480" y2="186" stroke="#30363d" stroke-width="1"/>
+  <text x="22" y="205" dominant-baseline="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="10" fill="#8b949e">Applied AI &#183; 5 Patterns &#183; Production Architecture</text>
+  <text x="458" y="205" text-anchor="end" dominant-baseline="middle"
+        font-family="ui-monospace,'SF Mono',Consolas,monospace" font-size="10" fill="#58a6ff">View repo &#8594;</text>
+</svg>

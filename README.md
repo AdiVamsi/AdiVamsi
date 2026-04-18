@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=Adi%20Vamsi&fontSize=52&fontColor=ffffff&animation=fadeIn&fontAlignY=36&desc=Python%20%C2%B7%20AI%20Systems%20%C2%B7%20Backend%20Engineering&descAlignY=55&descAlign=50&descColor=a0aec0" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=Adi%20Vamsi&fontSize=52&fontColor=ffffff&animation=fadeIn&fontAlignY=36&desc=AI%20Systems%20%C2%B7%20LLM%20Pipelines%20%C2%B7%20Python%20Backend&descAlignY=55&descAlign=50&descColor=a0aec0" width="100%"/>
 
 <div align="center">
 
@@ -10,7 +10,7 @@
 
 AI engineer building **production LLM systems, agent platforms, and the Python backends that hold them up** — software designed to eliminate manual work, not to win demos.
 
-Currently at DATARA (May 2025–present) shipping async Python services and LLM classification pipelines — **99.9% uptime, 35% reduction in manual data extraction** across core workflows. Side builds: a grounded RAG service for insurance claim adjudication, an LLM-powered CRM for Indian SMBs, and a self-improving agent research platform.
+Currently at DATARA (May 2025–present) shipping async Python services and LLM classification pipelines — **99.9% uptime, 35% reduction in manual data extraction** across core workflows. Side builds: a grounded RAG service for insurance claim adjudication, a portfolio of 5 applied AI apps, an LLM-powered CRM for Indian SMBs, and a self-improving agent research platform.
 
 ---
 
@@ -28,22 +28,19 @@ Currently at DATARA (May 2025–present) shipping async Python services and LLM 
 
 ## Systems
 
-### [→ Insurance Claims RAG](https://github.com/AdiVamsi/insurance-claim-rag) &nbsp; <sub>`latest`</sub>
-
-A grounded retrieval service for insurance claim adjudication. Every answer is backed by a verbatim policy clause and a JSON audit trail an adjuster can hand to compliance. When the corpus doesn't support an answer, the service **refuses instead of guessing** — the output is structured JSON, not chat.
-
-```
-POST /ask → classify → retrieve → ground → verify → ClaimAnswer JSON
-                │          │         │         │
-                ▼ low conf ▼ low sim │         ▼ quote not in context
-                └──────────────── refuse ──────┘
-```
-
-Each request runs a **LangGraph** state machine with three independent refusal gates (classifier confidence, retrieval similarity, verifier quote-match). The gate that tripped is recorded in `audit_trail` — every decision is reviewable. Ingest: PDFs → pypdf per-page → heading-aware split → MiniLM embeddings → ChromaDB filtered by `policy_type`. FastAPI, Python 3.11, ~2 minutes from clone to first response.
-
-&nbsp;
-
 <table>
+<tr>
+<td width="50%">
+<a href="https://github.com/AdiVamsi/insurance-claim-rag">
+<img src="images/card-insurance-rag.svg" width="100%" alt="Insurance Claims RAG"/>
+</a>
+</td>
+<td width="50%">
+<a href="https://github.com/AdiVamsi/ai-apps-portfolio">
+<img src="images/card-ai-apps.svg" width="100%" alt="AI Apps Portfolio"/>
+</a>
+</td>
+</tr>
 <tr>
 <td width="50%">
 <a href="https://github.com/AdiVamsi/indian-sme-engine">
@@ -58,9 +55,72 @@ Each request runs a **LangGraph** state machine with three independent refusal g
 </tr>
 </table>
 
-**Indian SME Engine** — LLM-powered multi-tenant CRM for Indian SMBs. Captures leads from web forms and WhatsApp, auto-classifies and scores them via AI, surfaces prioritized follow-ups through a real-time operator dashboard. Node.js/Express + Prisma/PostgreSQL, JWT auth with tenant-isolated data layer, WebSocket live updates, AI scoring engine. **100+ commits, actively developed.**
+<details>
+<summary><b>Insurance Claims RAG</b> — Grounded retrieval for claim adjudication &nbsp; <sub><code>latest</code></sub></summary>
 
-**Agent Hub** — Self-improving agent platform running **~12 experiments/hr** via an automated loop: `program.md → artifact → scalar metric → git commit or reset`. Meta-agent coordination layer for hands-off overnight optimization with clean version history — pluggable into Claude, Codex, or any LLM provider.
+&nbsp;
+
+Every answer is backed by a verbatim policy clause and a JSON audit trail an adjuster can hand to compliance. When the corpus doesn't support an answer, the service **refuses instead of guessing**.
+
+```
+POST /ask → classify → retrieve → ground → verify → ClaimAnswer JSON
+                │          │         │         │
+                ▼ low conf ▼ low sim │         ▼ quote not in context
+                └──────────────── refuse ──────┘
+```
+
+LangGraph state machine with **3 independent refusal gates** (classifier confidence, retrieval similarity, verifier quote-match). Ingest: PDFs → pypdf per-page → heading-aware split → MiniLM embeddings → ChromaDB filtered by `policy_type`. FastAPI, Python 3.11, ~2 minutes from clone to first response.
+
+</details>
+
+<details>
+<summary><b>AI Apps Portfolio</b> — 5 applied AI patterns in one structured codebase</summary>
+
+&nbsp;
+
+Chat · Prompt Chaining · Content Summarization · Natural-Language-to-SQL · Multi-Document RAG — all built on a shared, **provider-agnostic** foundation that works with both OpenAI and local Ollama models. Not five random demos — one system with consistent architecture, shared utilities, clean UIs, and honest limitations.
+
+</details>
+
+<details>
+<summary><b>Indian SME Engine</b> — LLM-powered multi-tenant CRM for Indian SMBs</summary>
+
+&nbsp;
+
+Captures leads from web forms and WhatsApp, auto-classifies and scores them via AI, surfaces prioritized follow-ups through a real-time operator dashboard. Node.js/Express + Prisma/PostgreSQL, JWT auth with tenant-isolated data layer, WebSocket live updates, AI scoring engine. **100+ commits, actively developed.**
+
+</details>
+
+<details>
+<summary><b>Agent Hub</b> — Self-improving agent platform</summary>
+
+&nbsp;
+
+Each agent optimizes a real-world problem overnight via an automated loop: `program.md → artifact → scalar metric → git commit or reset`. Running **~12 experiments/hr**. Meta-agent coordination layer for hands-off overnight optimization with clean version history — pluggable into Claude, Codex, or any LLM provider.
+
+</details>
+
+---
+
+## Proof of Work
+
+Numbers from production, not a portfolio site.
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  DATARA · Python Developer · May 2025–present                   │
+├─────────────────────────────────────────────────────────────────┤
+│  5 production pipelines  │  99.9% uptime  │  35% less manual    │
+│  async I/O: 10h → 8h    │  3 new sources │  150 hrs/mo saved   │
+│  incidents: 48h → 12h   │  in <2 wks each │  post-deploy -15%  │
+├─────────────────────────────────────────────────────────────────┤
+│  XRG · Jr SWE (New Relic client) · Jun 2020–Dec 2022           │
+├─────────────────────────────────────────────────────────────────┤
+│  15+ microservices       │  85%+ coverage │  ~30% faster QA     │
+│  millions daily queries  │  ~20% faster   │  ~40 hrs/sprint     │
+│                          │  throughput    │  saved               │
+└─────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
@@ -69,12 +129,8 @@ Each request runs a **LangGraph** state machine with three independent refusal g
 ```
 role:     Python Developer @ DATARA Pvt Ltd  ·  San Antonio, TX / Remote
 focus:    LLM pipeline automation + async Python backend services
-shipped:  5 production data pipelines · async I/O cut turnaround 10h → 8h
-          Modular integration layer onboarded 3 new sources in <2 wks each
-          LLM classification stages removed 35% of manual data extraction
-          (~150 analyst-hrs/mo recovered) · 99.9% uptime across envs
-ops:      Structured debug + logging cut incident resolution 48h → 12h
 latest:   insurance-claim-rag — grounded RAG w/ refusal gates & audit trail
+next:     ai-apps-portfolio — 5 applied AI apps, provider-agnostic
 stack:    Python · FastAPI · LangChain · LangGraph · ChromaDB · PostgreSQL
 ```
 
@@ -92,6 +148,7 @@ stack:    Python · FastAPI · LangChain · LangGraph · ChromaDB · PostgreSQL
 ![LangChain](https://img.shields.io/badge/LangChain-0d1117?style=flat-square&logo=chainlink&logoColor=375bd2)
 ![LangGraph](https://img.shields.io/badge/LangGraph-0d1117?style=flat-square&logo=python&logoColor=58a6ff)
 ![OpenAI](https://img.shields.io/badge/OpenAI-0d1117?style=flat-square&logo=openai&logoColor=ffffff)
+![ChromaDB](https://img.shields.io/badge/ChromaDB-0d1117?style=flat-square&logo=databricks&logoColor=ff6f00)
 
 **Backend & Infra** &nbsp;
 ![FastAPI](https://img.shields.io/badge/FastAPI-0d1117?style=flat-square&logo=fastapi&logoColor=009688)
@@ -212,6 +269,8 @@ stack:    Python · FastAPI · LangChain · LangGraph · ChromaDB · PostgreSQL
 
 <img src="https://github-readme-stats.vercel.app/api?username=AdiVamsi&show_icons=true&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=e6edf3&icon_color=58a6ff&include_all_commits=true&count_private=true" height="165"/>
 <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=AdiVamsi&layout=compact&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=e6edf3&langs_count=8" height="165"/>
+
+<img src="https://github-readme-streak-stats.herokuapp.com?user=AdiVamsi&theme=transparent&hide_border=true&background=0D1117&ring=58A6FF&fire=58A6FF&currStreakLabel=58A6FF&sideLabels=E6EDF3&dates=8B949E&currStreakNum=E6EDF3&sideNums=E6EDF3" height="165"/>
 
 </div>
 
