@@ -10,7 +10,7 @@
 
 AI engineer building **production LLM systems, agent platforms, and the Python backends that hold them up** — software designed to eliminate manual work, not to win demos.
 
-Currently at DATARA (May 2025–present) shipping async Python services and LLM classification pipelines — **99.9% uptime, 35% reduction in manual data extraction** across core workflows. Side builds: a grounded RAG service for insurance claim adjudication, a portfolio of 5 applied AI apps, an LLM-powered CRM for Indian SMBs, and a self-improving agent research platform.
+Currently at Capgemini (Jul 2024–present) shipping async Python services and LLM classification pipelines — **99.9% uptime, 35% reduction in manual data extraction** across core workflows. Side builds: a grounded RAG service for insurance claim adjudication, a portfolio of 5 applied AI apps, an LLM-powered CRM for Indian SMBs, and a self-improving agent research platform.
 
 ---
 
