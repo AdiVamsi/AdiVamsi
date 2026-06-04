@@ -127,7 +127,7 @@ Numbers from production, not a portfolio site.
 ## Now Building
 
 ```
-role:     Python Developer @ DATARA Pvt Ltd  ·  San Antonio, TX / Remote
+role:     Python Developer @ Capgemni  ·  San Antonio, TX / Remote
 focus:    LLM pipeline automation + async Python backend services
 latest:   insurance-claim-rag — grounded RAG w/ refusal gates & audit trail
 next:     ai-apps-portfolio — 5 applied AI apps, provider-agnostic
@@ -295,19 +295,6 @@ All stages collapse into a single `ClaimAnswer` object. Every field is typed, ev
 &nbsp;
 
 <sub>3 independent refusal gates. Every answer traceable to a verbatim clause. If the system can't prove it, it says so.<br/>— <a href="https://github.com/AdiVamsi/insurance-claim-rag"><i>View the full system</i></a></sub>
-
----
-
-## Activity
-
-<div align="center">
-
-<img src="https://github-readme-stats.vercel.app/api?username=AdiVamsi&show_icons=true&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=e6edf3&icon_color=58a6ff&include_all_commits=true&count_private=true" height="165"/>
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=AdiVamsi&layout=compact&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=e6edf3&langs_count=8" height="165"/>
-
-<img src="https://github-readme-streak-stats.herokuapp.com?user=AdiVamsi&theme=transparent&hide_border=true&background=0D1117&ring=58A6FF&fire=58A6FF&currStreakLabel=58A6FF&sideLabels=E6EDF3&dates=8B949E&currStreakNum=E6EDF3&sideNums=E6EDF3" height="165"/>
-
-</div>
 
 ---
 
