@@ -108,7 +108,7 @@ Numbers from production, not a portfolio site.
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  DATARA · Python Developer · May 2025–present                   │
+│  Capgemni · Python Developer · May 2025–present                   │
 ├─────────────────────────────────────────────────────────────────┤
 │  5 production pipelines  │  99.9% uptime  │  35% less manual    │
 │  async I/O: 10h → 8h    │  3 new sources │  150 hrs/mo saved   │
